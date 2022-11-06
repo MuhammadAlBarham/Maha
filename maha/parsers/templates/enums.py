@@ -8,6 +8,7 @@ class DimensionType(Enum):
     AMOUNT_OF_MONEY = auto()
     NAME = auto()
     DISTANCE = auto()
+    VOLUME = auto()
     DURATION = auto()
     ORDINAL = auto()
     NUMERAL = auto()
@@ -117,6 +118,10 @@ class DistanceUnit(Unit):
     YARDS = auto()
     FEET = auto()
     INCHES = auto()
+
+
+class VolumeUnit(Unit):
+    CUBICMETERS = auto()
 
 
 class DurationUnit(Unit):

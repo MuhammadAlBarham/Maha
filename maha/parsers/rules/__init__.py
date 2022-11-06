@@ -5,6 +5,7 @@ from .names import *
 from .numeral import *
 from .ordinal import *
 from .time import *
+from .volume import *
 
 
 def compile_rules():

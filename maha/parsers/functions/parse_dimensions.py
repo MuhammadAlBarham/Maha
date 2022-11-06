@@ -10,6 +10,7 @@ from maha.parsers.rules import (
     RULE_NUMERAL,
     RULE_ORDINAL,
     RULE_TIME,
+    RULE_VOLUME,
 )
 from maha.parsers.templates import Dimension, DimensionType
 from maha.rexy import Expression
@@ -80,6 +81,8 @@ def parse_dimension(
         output.extend(_get_dimensions(RULE_DURATION, text, DimensionType.DURATION))
     if distance:
         output.extend(_get_dimensions(RULE_DISTANCE, text, DimensionType.DISTANCE))
+    if volume:
+        output.extend(_get_dimensions(RULE_VOLUME, text, DimensionType.VOLUME))
     if numeral:
         output.extend(_get_dimensions(RULE_NUMERAL, text, DimensionType.NUMERAL))
     if ordinal:
@@ -90,8 +93,6 @@ def parse_dimension(
         raise NotImplementedError("temperature is not implemented yet")
     if time:
         output.extend(_get_dimensions(RULE_TIME, text, DimensionType.TIME))
-    if volume:
-        raise NotImplementedError("volume is not implemented yet")
     if names:
         output.extend(_get_dimensions(RULE_NAME, text, DimensionType.NAME))
 
