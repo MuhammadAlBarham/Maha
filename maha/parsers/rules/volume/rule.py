@@ -1,7 +1,7 @@
 """Rules to extract volume"""
 from __future__ import annotations
 
-__all__ = ["RULE_VOLUME"]
+__all__ = ["RULE_VOLUME_CUBICMETERS", "RULE_VOLUME"]
 
 from maha.parsers.rules.numeral.rule import RULE_NUMERAL, parse_numeral
 from maha.parsers.templates import FunctionValue
@@ -19,7 +19,7 @@ from .values import *
 
 
 def get_pattern(singular_frac_group, singular, all_units, dual=None):
-    """Get regex pattern for volume."""
+    """Get regex pattern for distance."""
     if dual:
         return non_capturing_group(
             spaced_patterns(RULE_NUMERAL, all_units),
@@ -49,7 +49,7 @@ def get_unit_fraction_value(matched_text):
     return value
 
 
-UnitsGroup = ExpressionGroup(ONE_CUBICMETER, TWO_CUBICMETERS, SEVERAL_CUBICMETERS)
+UnitsGroup = ExpressionGroup(SEVERAL_CUBICMETERS, TWO_CUBICMETERS, ONE_CUBICMETER)
 
 
 def get_matched_value(matched_text) -> ValueUnit:
@@ -58,7 +58,7 @@ def get_matched_value(matched_text) -> ValueUnit:
 
 
 def get_groups():
-    return ["cubic_meters"]
+    return ["cubicmeters"]
 
 
 def parse_volume(match):
